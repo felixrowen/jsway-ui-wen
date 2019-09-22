@@ -14,7 +14,8 @@ import "codemirror/mode/css/css";
 import "codemirror/mode/javascript/javascript";
 
 import Questions from './components/questions/Question'
-import TestCase from './components/questions/TestCase'
+import QuestionButton from './components/questions/QuestionButton'
+import { ListOfQuestions } from './components/questions/ListOfQuestions'
 
 class App extends Component {
   constructor() {
@@ -22,7 +23,11 @@ class App extends Component {
     this.state = {
       id: "",
       js: `function myFunction() {`+ "\n\n" +`  //put the logic here`+"\n\n"+ `}` + "\n\n" + `document.getElementById("output").innerHTML = myFunction();`,
-      answer: ""
+      answer: "",
+      title: "",
+      example: "",
+      input: "",
+      output: ""
     };
 
     this.pusher = new Pusher("dbddcf4de43fefadd192", {
@@ -92,7 +97,7 @@ class App extends Component {
     this.setState({
       answer: document.getElementById("output").innerHTML
     })
-    this.answerChecker(document.getElementById("output").innerHTML, "true")
+    this.answerChecker(document.getElementById("output").innerHTML, this.state.output)
     document.close();
   };
 
@@ -101,7 +106,7 @@ class App extends Component {
     this.setState({
       js: `function myFunction() {`+ "\n\n" +`  //put the logic here`+"\n\n"+ `}` + "\n\n" + `document.getElementById("output").innerHTML = myFunction();`
     })
-    
+
     const iframe = this.refs.iframe;
     const document = iframe.contentDocument;
     const documentContents = ``;
@@ -117,6 +122,15 @@ class App extends Component {
     } else {
       alert('Wrong Answer..')
     }
+  }
+
+  changeQuestion = (title, example, input, output) => {
+    this.setState({
+      title: title,
+      example: example,
+      input: input,
+      output: output
+    })
   }
 
   render() {
@@ -170,17 +184,25 @@ class App extends Component {
         <section className="result">
           <div className="questions">
             <Questions 
-              title="Palindrome"
-              example="Kodok => true, asd => false"
-              input="A man, a plan, a canal: Panama"
-              output="true"
-              answer={this.state.answer}
-              answerChecker={this.answerChecker}
+              title={this.state.title}
+              example={this.state.example}
+              input={this.state.input}
+              output={this.state.output}
             />
           </div>
           <iframe title="result" className="iframe" ref="iframe" />
           <div className="test-case">
-            <TestCase />
+            {
+              ListOfQuestions.map((question) => (
+                <QuestionButton 
+                  title={question.title}
+                  example={question.example}
+                  input={question.input}
+                  output={question.output}
+                  changeQuestion={this.changeQuestion}
+                />
+              ))
+            }
           </div>
         </section>
       </div>
