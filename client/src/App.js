@@ -21,7 +21,7 @@ class App extends Component {
     super();
     this.state = {
       id: "",
-      js: "",
+      js: `function myFunction() {`+ "\n\n" +`  //put the logic here`+"\n\n"+ `}` + "\n\n" + `document.getElementById("output").innerHTML = myFunction();`,
       answer: ""
     };
 
@@ -59,6 +59,7 @@ class App extends Component {
   runCode = () => {
     const { js } = this.state;
 
+    console.log(js)
     const iframe = this.refs.iframe;
     const document = iframe.contentDocument;
     const documentContents = `
@@ -132,14 +133,9 @@ class App extends Component {
               JavaScript
             </div>
             <span className="note-text">
-              <span style={{ color: 'yellow' }}>note: </span> 
-              please use 
-              <span style={{ color: 'lightgreen' }}> myFunction() </span> 
-               as the name of the function
-              <br />
-              <span style={{ marginLeft: '64px' }}>
-                put all the variables inside
-                <span style={{ color: 'lightgreen' }}> myFunction() </span>
+              <span style={{ color: 'yellow' }}>note: </span>
+              <span>
+                put all the variables inside (create a no parameter function)
               </span>
             </span>
             <br /><br />
