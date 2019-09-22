@@ -129,12 +129,16 @@ class App extends Component {
   }
 
   changeQuestion = (title, example, input, output) => {
-    this.setState({
-      title: title,
-      example: example,
-      input: input,
-      output: output
-    })
+    this.setState({ isLoading: true })
+    setTimeout(() => {
+      this.setState({
+        title: title,
+        example: example,
+        input: input,
+        output: output,
+        isLoading: false
+      })
+    }, 2000);
   }
 
   render() {
@@ -184,18 +188,24 @@ class App extends Component {
           >
             Clear
           </button>
-          <div style={{ position: 'absolute', bottom: '170px', left: '60px' }}>
+          <div style={{ position: 'absolute', bottom: '200px', left: '60px' }}>
             <h1 style={{ color: 'white', fontSize: '25px' }}>Your Score = {this.state.score}</h1>  
           </div>
         </section>
         <section className="result">
           <div className="questions">
-            <Questions 
-              title={this.state.title}
-              example={this.state.example}
-              input={this.state.input}
-              output={this.state.output}
-            />
+            {
+              this.state.isLoading ? 
+              <div className="loader" style={{ padding: '15%', textAlign: 'center' }}>
+                <span style={{ fontSize: '25px', color: 'white' }}>Loading...</span>
+              </div> :
+              <Questions 
+                title={this.state.title}
+                example={this.state.example}
+                input={this.state.input}
+                output={this.state.output}
+              />
+            }
           </div>
           <iframe title="result" className="iframe" ref="iframe" />
           <div className="test-case">
