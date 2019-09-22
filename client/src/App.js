@@ -22,7 +22,7 @@ class App extends Component {
     super();
     this.state = {
       id: "",
-      js: `function myFunction() {`+ "\n\n" +`  //put the logic here`+"\n\n"+ `}` + "\n\n" + `document.getElementById("output").innerHTML = myFunction();`,
+      js: `function myFunction(input = /** put your input here*/) {`+ "\n\n" +`  //put the logic here`+"\n\n"+ `}` + "\n\n" + `document.getElementById("output").innerHTML = myFunction();`,
       answer: "",
       title: "",
       example: "",
