@@ -80,10 +80,13 @@ class App extends Component {
             font-family: monospace;
             font-size: 12px;
           }
+          .text {
+            color: green;
+          }
         </style>
       </head>
       <body>
-        Your Result : <span id="output"></span>
+        <span class="text">Your Result :</span> <span id="output"></span>
         <script type="text/javascript">
           ${js}
           document.getElementById("output").innerHTML = myFunction();
