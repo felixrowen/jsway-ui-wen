@@ -138,7 +138,7 @@ class App extends Component {
         output: output,
         isLoading: false
       })
-    }, 2000);
+    }, 1000);
   }
 
   render() {
