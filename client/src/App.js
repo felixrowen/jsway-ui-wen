@@ -102,10 +102,6 @@ class App extends Component {
   };
 
   clearResult = () => {
-    
-    this.setState({
-      js: `function myFunction() {`+ "\n\n" +`  //put the logic here`+"\n\n"+ `}` + "\n\n" + `document.getElementById("output").innerHTML = myFunction();`
-    })
 
     const iframe = this.refs.iframe;
     const document = iframe.contentDocument;
@@ -114,6 +110,12 @@ class App extends Component {
     document.open();
     document.write(documentContents);
     document.close();
+  }
+
+  resetCode = () => {
+    this.setState({
+      js: `function myFunction() {`+ "\n\n" +`  //put the logic here`+"\n\n"+ `}` + "\n\n" + `document.getElementById("output").innerHTML = myFunction();`
+    })
   }
 
   answerChecker = (answer, output) => {
@@ -186,6 +188,12 @@ class App extends Component {
             onClick={() => this.clearResult()}
           >
             Clear
+          </button>
+          <button 
+            className="reset-button"
+            onClick={() => this.resetCode()}
+          >
+            Reset
           </button>
           <div style={{ position: 'absolute', bottom: '200px', left: '60px' }}>
             <h1 style={{ color: 'white', fontSize: '25px' }}>Your Score = {this.state.score}</h1>  

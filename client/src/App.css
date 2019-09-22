@@ -27,7 +27,8 @@ html {
 
 .run-button {
   float: right;
-  margin: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
   width: 50px;
   height: 20px;
   border-radius: 15px;
@@ -40,7 +41,7 @@ html {
 
 .clear-button {
   float: right;
-  margin-top: 10px;
+  margin: 10px;
   width: 50px;
   height: 20px;
   border-radius: 15px;
@@ -48,6 +49,19 @@ html {
   border: none;
   color: white;
   background-color: red;
+  font-size: 10px;
+}
+
+.reset-button {
+  float: right;
+  margin-top: 10px;
+  width: 50px;
+  height: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  border: none;
+  color: black;
+  background-color: yellow;
   font-size: 10px;
 }
 
