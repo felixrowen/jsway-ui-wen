@@ -65,7 +65,6 @@ class App extends Component {
   runCode = () => {
     const { js } = this.state;
 
-    console.log(js)
     const iframe = this.refs.iframe;
     const document = iframe.contentDocument;
     const documentContents = `
