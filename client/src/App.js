@@ -27,7 +27,8 @@ class App extends Component {
       title: "",
       example: "",
       input: "",
-      output: ""
+      output: "",
+      score: 0
     };
 
     this.pusher = new Pusher("dbddcf4de43fefadd192", {
@@ -118,6 +119,9 @@ class App extends Component {
 
   answerChecker = (answer, output) => {
     if(answer === output) {
+      this.setState({
+        score: this.state.score + 1
+      })
       alert('Correct Answer !')
     } else {
       alert('Wrong Answer..')
@@ -180,6 +184,9 @@ class App extends Component {
           >
             Clear
           </button>
+          <div style={{ position: 'absolute', bottom: '170px', left: '60px' }}>
+            <h1 style={{ color: 'white', fontSize: '25px' }}>Your Score = {this.state.score}</h1>  
+          </div>
         </section>
         <section className="result">
           <div className="questions">
