@@ -138,14 +138,8 @@ class App extends Component {
               <span style={{ color: 'lightgreen' }}> myFunction() </span> 
                as the name of the function
               <br />
-              <span style={{ marginLeft: '64px' }}>use 
-                <span style={{ color: 'red' }}> var </span>
-                  not 
-                <span style={{ color: 'red' }}> let </span>
-              </span>
-              <br />
               <span style={{ marginLeft: '64px' }}>
-                put the variable inside
+                put all the variables inside
                 <span style={{ color: 'lightgreen' }}> myFunction() </span>
               </span>
             </span>
