@@ -135,7 +135,7 @@ class App extends Component {
             <span className="note-text">
               <span style={{ color: 'yellow' }}>note: </span>
               <span>
-                put all the variables inside (create a no parameter function)
+                put all the variables inside (<span style={{color: 'red'}}>create a function with no parameter</span>)
               </span>
             </span>
             <br /><br />
