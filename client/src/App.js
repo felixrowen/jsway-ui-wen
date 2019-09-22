@@ -110,7 +110,6 @@ class App extends Component {
     if(answer === output) {
       alert('Correct Answer !')
     } else {
-      this.clearResult()
       alert('Wrong Answer..')
     }
   }
