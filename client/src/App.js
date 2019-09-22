@@ -97,7 +97,11 @@ class App extends Component {
   };
 
   clearResult = () => {
-
+    
+    this.setState({
+      js: `function myFunction() {`+ "\n\n" +`  //put the logic here`+"\n\n"+ `}` + "\n\n" + `document.getElementById("output").innerHTML = myFunction();`
+    })
+    
     const iframe = this.refs.iframe;
     const document = iframe.contentDocument;
     const documentContents = ``;
