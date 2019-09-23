@@ -250,7 +250,7 @@ class App extends Component {
           >
             Reset
           </button>
-          <div style={{ position: 'absolute', bottom: '200px', left: '60px' }}>
+          <div style={{ position: 'absolute', bottom: '70px', left: '60px' }}>
             <h1 style={{ color: 'white', fontSize: '25px' }}>Your Score = {this.state.score}</h1>  
           </div>
         </section>
