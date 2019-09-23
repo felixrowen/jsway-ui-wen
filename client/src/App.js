@@ -184,6 +184,8 @@ class App extends Component {
 
   changeQuestion = (title, example, input, output) => {
     this.setState({ isLoading: true })
+    this.clearResult()
+    this.resetCode()
     setTimeout(() => {
       this.setState({
         title: title,
