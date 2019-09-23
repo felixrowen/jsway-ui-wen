@@ -12,6 +12,7 @@ import "codemirror/theme/dracula.css";
 import "codemirror/mode/htmlmixed/htmlmixed";
 import "codemirror/mode/css/css";
 import "codemirror/mode/javascript/javascript";
+import SweetAlert from 'react-bootstrap-sweetalert';
 
 import Questions from './components/questions/Question'
 import QuestionButton from './components/questions/QuestionButton'
@@ -28,7 +29,9 @@ class App extends Component {
       example: "",
       input: "",
       output: "",
-      score: 0
+      score: 0,
+      // SWEET ALERT
+      sweetAlert: null,
     };
 
     this.pusher = new Pusher("dbddcf4de43fefadd192", {
@@ -38,6 +41,51 @@ class App extends Component {
 
     this.channel = this.pusher.subscribe("editor");
   }
+
+  /**SWEET ALERT */
+  correctSweetAlert(){
+    this.setState({
+      sweetAlert: (
+        <SweetAlert
+          success
+          title="Correct Anwer!"
+          style={{
+            display: "block",
+          }}
+          btnSize="lg"
+          confirmBtnBsStyle="primary" 
+          confirmBtnCssClass="sweetalert-confirm-btn"
+          onConfirm={() => {this.hideSweetAlert()}}
+        >
+        </SweetAlert>
+      )
+    })
+  }
+
+  wrongSweetAlert(){
+    this.setState({
+      sweetAlert: (
+        <SweetAlert
+          danger
+          title="Wrong Answer..."
+          style={{
+            display: "block",
+          }}
+          confirmBtnBsStyle="primary"
+          confirmBtnCssClass="sweetalert-danger-btn"
+          onConfirm={() => {this.hideSweetAlert()}}
+        >
+        </SweetAlert>
+      )
+    })
+  }
+
+  hideSweetAlert = () => {
+    this.setState({
+      sweetAlert: null
+    })
+  }
+  /**END OF SWEETALERT FUNCTION */  
 
   componentDidMount() {
     this.setState({
@@ -122,13 +170,15 @@ class App extends Component {
   }
 
   answerChecker = (answer, output) => {
-    if(answer === output) {
-      this.setState({
-        score: this.state.score + 1
-      })
-      alert('Correct Answer !')
-    } else {
-      alert('Wrong Answer..')
+    if(output) {
+      if(answer === output) {
+        this.setState({
+          score: this.state.score + 1
+        })
+        this.correctSweetAlert()
+      } else {
+        this.wrongSweetAlert()
+      }
     }
   }
 
@@ -234,6 +284,7 @@ class App extends Component {
             }
           </div>
         </section>
+        {this.state.sweetAlert}
       </div>
     );
   }
