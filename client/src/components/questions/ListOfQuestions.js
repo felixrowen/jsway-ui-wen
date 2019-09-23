@@ -13,9 +13,9 @@ export const ListOfQuestions = [
   },
   {
     title: "Anagram Difference",
-    example: "n = 5 , ( a jk abb mn abc ) ( bb kj bbc op def ), a and bb return -1, jk and kj return 0 because they have the same char, abb to bbc return 1 because a -> c, mn to op return 2 because 2 different char, abc to def return 3 because all the char is different.",
-    input: "[a, jk, abb, mn, abc] and [bb, kj, bbc, op, def]",
-    output: "-1,0,1,2,3"
+    example: "( a jk abb mn abc ) compare with ( bb kj bbc op def ), a and bb return -1, jk and kj return 0 because they have the same char, abb to bbc return 1 because a -> c, mn to op return 2 because 2 different char, abc to def return 3 because all the char is different.",
+    input: "input1= `aabbc` & input2=`dccee` ",
+    output: "4"
   }
 
 ]
