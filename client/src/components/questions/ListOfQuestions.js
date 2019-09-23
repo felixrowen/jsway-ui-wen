@@ -2,7 +2,7 @@ export const ListOfQuestions = [
   {
     title: "Palindrome",
     example: "Kodok => true, asd => false",
-    input: "A man, a plan, a canal: Panama",
+    input: "`A man, a plan, a canal: Panama`",
     output: "true"
   },
   {
